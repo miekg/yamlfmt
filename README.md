@@ -1,4 +1,4 @@
 # YAMLfmt
 
-`yamlfmt` is a little Go binary that read YAML from file(s) are standard input, formats it and then 
+`yamlfmt` is a little Go binary that reads YAML from file(s) or standard input, formats it and then
 writes it to standard output.
