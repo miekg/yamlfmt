@@ -33,7 +33,7 @@ func main() {
 	}
 
 	for _, d := range decoders {
-		in := map[string]interface{}{}
+		in := yaml.MapSlice{}
 		err := d.Decode(&in)
 		for err == nil {
 			e := yaml.NewEncoder(os.Stdout)
