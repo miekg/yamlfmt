@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: metallb-system
+  labels:
+    app: metallb
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: metallb-system
+  name: controller
+  labels:
+    app: metallb
+---
+apiVersion: v1 # Hello, I'm a comment.
+kind: ServiceAccount
+metadata:
+  namespace: metallb-system
+  name: speaker
+  labels:
+    app: metallb

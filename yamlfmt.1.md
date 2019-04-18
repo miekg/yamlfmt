@@ -24,7 +24,3 @@ Multiple YAML documents in a single input/file are supported.
 
 **-strict**
 :   return an error on invalid YAML.
-
-# BUGS
-
-Comments are not parsed and removed from the input.

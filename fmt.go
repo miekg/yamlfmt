@@ -10,7 +10,7 @@ import (
 	"log"
 	"os"
 
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 var (
@@ -33,11 +33,11 @@ func main() {
 	}
 
 	for _, d := range decoders {
-		in := yaml.MapSlice{}
+		in := yaml.Node{}
 		err := d.Decode(&in)
 		for err == nil {
 			e := yaml.NewEncoder(os.Stdout)
-			if err := e.Encode(in); err != nil {
+			if err := e.Encode(&in); err != nil {
 				log.Fatal(err)
 			}
 			e.Close()
