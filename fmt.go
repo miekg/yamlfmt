@@ -1,6 +1,4 @@
 // yamlfmt formats YAML. It reads from standard input or any files given on the command line.
-// Comments are ignored and not outputted. When yaml.v2 (or v3) supports commment parsing this
-// will be supported here as well.
 package main
 
 import (
