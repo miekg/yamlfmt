@@ -1,0 +1,17 @@
+name: "yamlfmt"
+arch: "amd64"
+platform: "linux"
+version: "v0.0.1"
+section: "default"
+priority: "extra"
+provides:
+- yamlfmt
+maintainer: "Miek Gieben <miek@miek.nl>"
+description: |
+  YamlFmt formats YAML.
+homepage: "https://github.com/miekg/yamlfmt"
+license: "MIT"
+bindir: "/usr/bin"
+files:
+  ./yamlfmt: "/usr/bin/yamlfmt"
+  ./yamlfmt.1: "/usr/share/man/man1/yamlfmt.1"
