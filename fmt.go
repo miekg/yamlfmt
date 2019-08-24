@@ -12,7 +12,8 @@ import (
 )
 
 var (
-	strict = flag.Bool("strict", false, "be strict when parsing the YAML")
+	strict = flag.Bool("strict", false, "be strict when parsing")
+	indent = flag.Uint("indent", 2, "default indent")
 )
 
 func main() {
@@ -35,13 +36,14 @@ func main() {
 		err := d.Decode(&in)
 		for err == nil {
 			e := yaml.NewEncoder(os.Stdout)
+			e.SetIndent(int(*indent))
 			if err := e.Encode(&in); err != nil {
 				log.Fatal(err)
 			}
 			e.Close()
 
 			if err = d.Decode(&in); err == nil {
-				fmt.Println("---")
+				fmt.Println("---\n")
 			}
 		}
 
