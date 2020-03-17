@@ -1,4 +1,3 @@
-// yamlfmt formats YAML. It reads from standard input or any files given on the command line.
 package main
 
 import (
@@ -18,8 +17,12 @@ func main() {
 	indent := flag.Int("indent", 2, "default indent")
 	flag.Parse()
 
-	for _, f := range flag.Args() {
-		formatFile(f, *indent, *overwrite)
+	if flag.NArg() > 0 {
+		for _, f := range flag.Args() {
+			formatFile(f, *indent, *overwrite)
+		}
+	} else {
+		formatStream(os.Stdin, os.Stdout, *indent)
 	}
 }
 
@@ -54,7 +57,7 @@ func formatStream(r io.Reader, out io.Writer, indent int) error {
 		e.Close()
 
 		if err = d.Decode(&in); err == nil {
-			fmt.Fprintln(out, "---\n")
+			fmt.Fprintln(out, "---")
 		}
 	}
 
