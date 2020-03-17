@@ -41,3 +41,9 @@ cat $file | go run yamlfmt.go > $out
 test $? -eq 0 || { echo "Failed to run reading stdin"; exit 1; }
 
 cmp $out $gold || { echo "Unexpected output"; diff $out $gold; exit 1; }
+
+file1=$(mktemp)
+cp $file $file1
+go run yamlfmt.go -w $file $file1 || { echo "Failed to replace multiple files"; exit 1; }
+
+cmp $file1 $gold || { echo "Unexpected output from replacing multiple files"; diff $file1 $gold; exit 1; }
